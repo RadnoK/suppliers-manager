@@ -1,0 +1,10 @@
+/vendor
+/coverage
+
+/bin/*
+!/bin/console
+
+.env
+
+/behat.yml
+/phpspec.yml

@@ -1,0 +1,2 @@
+imports:
+    - suites/supplier_synchronization.yml

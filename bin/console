@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+require __DIR__.'/../vendor/autoload.php';
+
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Console\Application;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use Symfony\Component\EventDispatcher\DependencyInjection\RegisterListenersPass;
+use Symfony\Component\Dotenv\Dotenv;
+
+(new Dotenv())->load(__DIR__.'/../.env');
+
+$container = new ContainerBuilder(new ParameterBag());
+$container->setParameter('root_dir', __DIR__ . '/..');
+
+$pass = new RegisterListenersPass();
+$container->addCompilerPass($pass);
+
+$loader = new XmlFileLoader($container, new FileLocator(__DIR__));
+$loader->load('../config/services.xml');
+
+$container->compile();
+
+$application = new Application();
+$application->add($container->get('integration.cli.synchronize_suppliers_action'));
+$application->run();
+

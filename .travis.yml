@@ -1,0 +1,25 @@
+language: php
+
+dist: trusty
+group: deprecated-2017Q4
+
+sudo: required
+
+php:
+    - 7.2
+
+cache:
+  directories:
+      - vendor
+      - bin
+
+before_install:
+    - phpenv config-rm xdebug.ini || true
+    - echo "memory_limit=4096M" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+    - sleep 10
+
+install:
+    - composer install --no-interaction --prefer-dist
+
+script:
+    - composer check

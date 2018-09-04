@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+    <product>
+        <id>123-456-1</id>
+        <name>Product 1</name>
+        <desc>Product 1 description</desc>
+    </product>
+    <product>
+        <id>123-456-2</id>
+        <name>Product 2</name>
+        <desc>Product 2 description</desc>
+    </product>
+    <product>
+        <id>123-456-3</id>
+        <name>Product 3</name>
+        <desc>Product 3 description</desc>
+    </product>
+    <product>
+        <id>123-456-4</id>
+        <name>Product 4</name>
+        <desc>Product 4 description</desc>
+    </product>
+    <product>
+        <id>123-456-5</id>
+        <name>Product 5</name>
+        <desc>Product 5 description</desc>
+    </product>
+    <product>
+        <id>123-456-6</id>
+        <name>Product 6</name>
+        <desc>Product 6 description</desc>
+    </product>
+    <product>
+        <id>123-456-7</id>
+        <name>Product 7</name>
+        <desc>Product 7 description</desc>
+    </product>
+    <product>
+        <id>123-456-8</id>
+        <name>Product 8</name>
+        <desc>Product 8 description</desc>
+    </product>
+</products>

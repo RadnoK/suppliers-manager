@@ -1,0 +1,10 @@
+version: "3.1"
+
+services:
+    php-fpm:
+        build: docker/php-fpm
+        container_name: web-service-integration-php-fpm
+        working_dir: /app
+        volumes:
+            - .:/app
+            - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini

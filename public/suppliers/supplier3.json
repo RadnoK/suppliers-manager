@@ -1,0 +1,16 @@
+{
+  "list": [
+    {
+      "id": "999-ABC-DEF-1",
+      "name": "Product 1"
+    },
+    {
+      "id": "999-ABC-DEF-2",
+      "name": "Product 2"
+    },
+    {
+      "id": "999-ABC-DEF-3",
+      "name": "Product 3"
+    }
+  ]
+}

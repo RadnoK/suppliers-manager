@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+    <product>
+        <id>123-456-1</id>
+        <name>Product 1</name>
+        <desc>Product 1 description</desc>
+    </product>
+    <product>
+        <id>123-456-2</id>
+        <name>Product 2</name>
+        <desc>Product 2 description</desc>
+    </product>
+</products>
