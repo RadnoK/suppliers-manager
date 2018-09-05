@@ -2,4 +2,4 @@ default:
 #    suites:
 #        tasks_api:
 #            contexts_services:
-#                - Tests\Integration\Behat\Context\Cli\SuppliersContext
+#                - Tests\App\Behat\Context\Cli\SuppliersContext

@@ -3,30 +3,40 @@
 
 declare(strict_types=1);
 
-require __DIR__.'/../vendor/autoload.php';
-
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Console\Application;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
-use Symfony\Component\EventDispatcher\DependencyInjection\RegisterListenersPass;
+use App\Infrastructure\Kernel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Debug\Debug;
 use Symfony\Component\Dotenv\Dotenv;
 
-(new Dotenv())->load(__DIR__.'/../.env');
+set_time_limit(0);
 
-$container = new ContainerBuilder(new ParameterBag());
-$container->setParameter('root_dir', __DIR__ . '/..');
+require __DIR__.'/../vendor/autoload.php';
 
-$pass = new RegisterListenersPass();
-$container->addCompilerPass($pass);
+if (!class_exists(Application::class)) {
+    throw new \RuntimeException('You need to add "symfony/framework-bundle" as a Composer dependency.');
+}
 
-$loader = new XmlFileLoader($container, new FileLocator(__DIR__));
-$loader->load('../config/services.xml');
+if (!isset($_SERVER['APP_ENV'])) {
+    if (!class_exists(Dotenv::class)) {
+        throw new \RuntimeException('APP_ENV environment variable is not defined. You need to define environment variables for configuration or add "symfony/dotenv" as a Composer dependency to load variables from a .env file.');
+    }
 
-$container->compile();
+    (new Dotenv())->load(__DIR__.'/../.env');
+}
 
-$application = new Application();
-$application->add($container->get('integration.cli.synchronize_suppliers_action'));
-$application->run();
+$input = new ArgvInput();
+$env = $input->getParameterOption(['--env', '-e'], $_SERVER['APP_ENV'] ?? 'dev', true);
+$debug = (bool) ($_SERVER['APP_DEBUG'] ?? ('prod' !== $env)) && !$input->hasParameterOption('--no-debug', true);
 
+if ($debug) {
+    umask(0000);
+
+    if (class_exists(Debug::class)) {
+        Debug::enable();
+    }
+}
+
+$kernel = new Kernel($env, $debug);
+$application = new Application($kernel);
+$application->run($input);

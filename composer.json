@@ -1,70 +1,86 @@
 {
-  "name": "radnok/web-service-integration",
-  "description": "CLI based application to integrate with suppliers.",
-  "minimum-stability": "stable",
-  "license": "proprietary",
-  "authors": [
-    {
-      "name": "Konrad Alfaro",
-      "email": "alfaro.konrad@gmail.com"
-    }
-  ],
-  "require": {
-    "php": "^7.2",
+    "name": "radnok/suppliers-manager",
+    "description": "CLI based application to integrate with suppliers",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Konrad Alfaro",
+            "email": "alfaro.konrad@gmail.com",
+            "homepage": "https://radnok.com/"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
 
-    "ext-SimpleXML": "*",
-    "ext-json": "*",
+        "ext-SimpleXML": "*",
+        "ext-json": "*",
 
-    "monolog/monolog": "^1.19",
-    "symfony/console": "^4.1",
-    "symfony/event-dispatcher": "^4.1",
-    "symfony/dependency-injection": "^4.1",
-    "symfony/http-foundation": "^4.1",
-    "webmozart/assert": "^1.2",
-    "guzzlehttp/guzzle": "^6.3"
-  },
-  "require-dev": {
-    "behat/behat": "^3.4",
-    "friends-of-behat/context-service-extension": "^1.0",
-    "leanphp/phpspec-code-coverage": "^4.2",
-    "phpspec/phpspec": "^4.3",
-    "phpstan/phpstan": "^0.9",
-    "phpstan/phpstan-strict-rules": "^0.9",
-    "phpstan/phpdoc-parser": "^0.2",
-    "symplify/easy-coding-standard": "^4.2",
-    "symfony/dotenv": "^4.0",
-    "roave/security-advisories": "dev-master"
-  },
-  "autoload": {
-    "psr-4": {
-      "Integration\\": "src/Integration/"
+        "guzzlehttp/guzzle": "^6.3",
+        "prooph/service-bus-symfony-bundle": "^0.7.0",
+        "ramsey/uuid": "^3.8",
+        "ramsey/uuid-doctrine": "^1.5",
+        "symfony/console": "^4.1",
+        "symfony/flex": "^1.0",
+        "symfony/framework-bundle": "^4.1",
+        "symfony/monolog-bundle": "^3.3",
+        "symfony/orm-pack": "^1.0",
+        "symfony/yaml": "^4.1",
+        "webmozart/assert": "^1.2"
+    },
+    "require-dev": {
+        "behat/behat": "^3.4",
+        "friends-of-behat/context-service-extension": "^1.0",
+        "lakion/api-test-case": "^3.1",
+        "leanphp/phpspec-code-coverage": "^4.2",
+        "phpspec/phpspec": "^4.3",
+        "phpstan/phpstan": "^0.9",
+        "phpstan/phpstan-strict-rules": "^0.9",
+        "phpstan/phpdoc-parser": "^0.2",
+        "symplify/easy-coding-standard": "^4.2",
+        "symfony/dotenv": "^4.0",
+        "sylius/fixtures-bundle": "^1.2",
+        "roave/security-advisories": "dev-master"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "bin-dir": "bin",
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "spec\\App\\": "spec/",
+            "Tests\\App\\": "tests/"
+        }
+    },
+    "scripts": {
+        "check": [
+            "composer validate --strict --ansi",
+            "@analyse",
+            "@test"
+        ],
+        "fix": [
+            "bin/ecs check --ansi --no-progress-bar bin spec src tests --fix"
+        ],
+        "analyse": [
+            "bin/ecs check --ansi --no-progress-bar bin spec src tests",
+            "bin/phpstan analyse --ansi --no-progress -c phpstan.neon -l 7 src tests"
+        ],
+        "test": [
+            "bin/phpspec run --ansi",
+            "bin/behat --strict --colors"
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "spec\\Integration\\": "spec/Integration/",
-      "Tests\\Integration\\": "tests/"
-    }
-  },
-  "config": {
-    "bin-dir": "bin"
-  },
-  "scripts": {
-    "check": [
-      "composer validate --strict --ansi",
-      "@analyse",
-      "@test"
-    ],
-    "fix": [
-      "bin/ecs check --ansi --no-progress-bar bin spec src tests --fix"
-    ],
-    "analyse": [
-      "bin/ecs check --ansi --no-progress-bar bin spec src tests",
-      "bin/phpstan analyse --ansi --no-progress -c phpstan.neon -l 7 src tests"
-    ],
-    "test": [
-      "bin/phpspec run --ansi",
-      "bin/behat --strict --colors"
-    ]
-  }
 }

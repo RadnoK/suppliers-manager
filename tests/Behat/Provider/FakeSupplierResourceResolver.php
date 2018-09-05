@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\Integration\Behat\Provider;
+namespace Tests\App\Behat\Provider;
 
-use Integration\Supplier\Resolver\ResolverInterface;
+use App\Supplier\Resolver\ResolverInterface;
 
 class FakeSupplierResourceResolver implements ResolverInterface
 {

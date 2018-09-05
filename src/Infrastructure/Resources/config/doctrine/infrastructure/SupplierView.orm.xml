@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
+    <entity name="App\Infrastructure\ReadModel\View\SupplierView" table="app_supplier_view">
+        <id name="id" column="id" type="string" />
+
+        <field name="name" column="name" type="string" />
+
+        <many-to-many field="products" target-entity="App\Infrastructure\ReadModel\View\ProductView">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <join-table name="app_supplier_products">
+                <join-columns>
+                    <join-column name="supplier_id" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="product_id" referenced-column-name="id" unique="true" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+    </entity>
+</doctrine-mapping>

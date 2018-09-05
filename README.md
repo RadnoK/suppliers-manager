@@ -1,4 +1,4 @@
-# Supplier Synchronization
+# SupplierManager
 
 ## Usage
 ```bash
