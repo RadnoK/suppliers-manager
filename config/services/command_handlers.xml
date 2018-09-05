@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container
+        xmlns="http://symfony.com/schema/dic/services"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+>
+    <services>
+        <defaults autowire="true" autoconfigure="true" public="true" />
+
+        <prototype namespace="App\Application\Handler\" resource="%kernel.project_dir%/src/Application/Handler/*">
+            <tag name="prooph_service_bus.app_command_bus.route_target" message_detection="true" />
+        </prototype>
+    </services>
+</container>

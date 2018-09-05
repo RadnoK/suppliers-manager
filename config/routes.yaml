@@ -1,0 +1,11 @@
+app_list_suppliers:
+    path: '/suppliers'
+    methods: ['GET']
+    defaults:
+        _controller: 'App\Infrastructure\Api\ListSuppliersAction'
+
+app_synchronize_suppliers:
+    path: '/synchronize/supplier/{supplier}'
+    methods: ['POST']
+    defaults:
+        _controller: 'App\Infrastructure\Api\SynchronizeSupplierAction'

@@ -1,0 +1,7 @@
+default:
+    suites:
+        application_suppliers:
+            contexts_services:
+                - app.behat.context.application.supplier
+            filters:
+                tags: "@suppliers && @application"

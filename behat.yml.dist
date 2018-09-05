@@ -3,6 +3,16 @@ imports:
 
 default:
     extensions:
+        FriendsOfBehat\CrossContainerExtension: ~
+
         FriendsOfBehat\ContextServiceExtension:
             imports:
                 - "tests/Behat/Resources/config/services.xml"
+
+        FriendsOfBehat\SymfonyExtension:
+            env_file: .env
+            kernel:
+                class: 'App\Infrastructure\Kernel'
+                path: src/Infrastructure/Kernel.php
+                bootstrap: vendor/autoload.php
+                debug: true

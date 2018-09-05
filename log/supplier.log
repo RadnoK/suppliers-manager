@@ -1,8 +1,0 @@
-[2018-09-04 23:45:44] suppliers_logger.INFO: Added product: Product 1 {"supplier":"first"} []
-[2018-09-04 23:45:44] suppliers_logger.INFO: Added product: Product 2 {"supplier":"first"} []
-[2018-09-04 23:45:44] suppliers_logger.INFO: Added product: Product 3 {"supplier":"first"} []
-[2018-09-04 23:45:44] suppliers_logger.INFO: Added product: Product 4 {"supplier":"first"} []
-[2018-09-04 23:45:44] suppliers_logger.INFO: Added product: Product 5 {"supplier":"first"} []
-[2018-09-04 23:45:44] suppliers_logger.INFO: Added product: Product 6 {"supplier":"first"} []
-[2018-09-04 23:45:44] suppliers_logger.INFO: Added product: Product 7 {"supplier":"first"} []
-[2018-09-04 23:45:44] suppliers_logger.INFO: Added product: Product 8 {"supplier":"first"} []

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+    <item>
+        <key>CC-123-456-1</key>
+        <title>Product 1</title>
+        <description>Product 1 descriptionription</description>
+    </item>
+    <item>
+        <key>CC-123-456-2</key>
+        <title>Product 2</title>
+        <description>Product 2 descriptionription</description>
+    </item>
+    <item>
+        <key>CC-123-456-3</key>
+        <title>Product 3</title>
+        <description>Product 3 descriptionription</description>
+    </item>
+    <item>
+        <key>CC-123-456-4</key>
+        <title>Product 4</title>
+        <description>Product 4 descriptionription</description>
+    </item>
+    <item>
+        <key>CC-123-456-5</key>
+        <title>Product 5</title>
+        <description>Product 5 descriptionription</description>
+    </item>
+    <item>
+        <key>CC-123-456-6</key>
+        <title>Product 6</title>
+        <description>Product 6 descriptionription</description>
+    </item>
+    <item>
+        <key>CC-123-456-7</key>
+        <title>Product 7</title>
+        <description>Product 7 descriptionription</description>
+    </item>
+    <item>
+        <key>CC-123-456-8</key>
+        <title>Product 8</title>
+        <description>Product 8 descriptionription</description>
+    </item>
+</items>

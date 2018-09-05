@@ -1,2 +1,7 @@
+suites:
+    main:
+        namespace: App
+        psr4_prefix: App
+
 extensions:
     LeanPHP\PhpSpec\CodeCoverage\CodeCoverageExtension: ~

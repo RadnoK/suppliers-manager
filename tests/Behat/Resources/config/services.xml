@@ -6,6 +6,10 @@
         xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
 >
     <services>
-        <service id="integration.behat.provider.supplier_resource_resolver" class="Tests\Integration\Behat\Provider\FakeSupplierResourceResolver" />
+        <service id="app.behat.context.application.supplier" class="Tests\App\Behat\Context\Application\SupplierContext">
+            <argument type="service" id="__symfony__.prooph_service_bus.app_command_bus" />
+            <argument type="service" id="__symfony__.App\Infrastructure\Doctrine\Repository\DoctrineSupplierRepository" />
+            <tag name="fob.context_service" />
+        </service>
     </services>
 </container>

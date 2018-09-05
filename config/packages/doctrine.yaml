@@ -1,0 +1,28 @@
+parameters:
+    env(DATABASE_URL): ''
+
+doctrine:
+    dbal:
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+        url: '%env(resolve:DATABASE_URL)%'
+        types:
+            supplier_id_binary: App\Infrastructure\Doctrine\Type\SupplierIdBinaryType
+            products: App\Infrastructure\Doctrine\Type\ProductsType
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        mappings:
+            SupplierDomain:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Infrastructure/Resources/config/doctrine/domain/supplier'
+                prefix: 'App\Domain\Supplier\Model'
+            Infrastructure:
+                type: 'xml'
+                dir: '%kernel.root_dir%/Resources/config/doctrine/infrastructure'
+                prefix: 'App\Infrastructure\ReadModel\View'
+                is_bundle: false

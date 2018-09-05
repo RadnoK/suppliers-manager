@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
+    <entity name="App\Infrastructure\ReadModel\View\ProductView" table="app_product_view">
+        <id name="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="code" column="code" type="string" />
+        <field name="description" column="description" type="string" nullable="true" />
+
+        <many-to-one field="supplier" target-entity="App\Infrastructure\ReadModel\View\SupplierView" inversed-by="products">
+            <join-column name="supplier_id" referenced-column-name="id" />
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

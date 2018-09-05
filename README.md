@@ -1,8 +1,16 @@
-# Supplier Synchronization
+# SupplierManager
+A sample project with some fancy techniques and libraries.
+
+## Setup
+```bash
+$ docker-compose up
+$ docker exec -it app_php /bin/bash
+```
 
 ## Usage
-```bash
-$ php bin/console ingegration:synchronize:suppliers --name ...
+```
+$ php bin/console app:create:supplier NAME
+$ php bin/console app:supplier:synchronize NAME
 ```
 
 As a name, you can pass one of the values below:
